@@ -21,6 +21,7 @@ export default function App() {
   const [choiceOne, setChoiceOne] = useState(null)
   const [choiceTwo, setChoiceTwo] = useState(null)
 
+  // shuffle cards
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
@@ -30,14 +31,25 @@ export default function App() {
     setTurns(0)
   }
 
-  console.log(cards, turns)
+  // handle a choice
+  const handleChoice = (card) => {
+    //If choiceOne is null then it will be false then run setChoiceOne
+    //If choiceOne is not null then it will be true and run setChoiceTwo
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
+  }
 
   return (
     <div className="App">
       <h1>Magic Match</h1>
       <button onClick={shuffleCards}>New Game</button>
       <div className="card-grid">
-        {cards.map(card => <SingleCard card={card} key={card.id}/>)}
+        {cards.map(card => 
+          <SingleCard 
+            card={card} 
+            key={card.id} 
+            handleChoice={handleChoice}
+          />
+        )}
       </div>
     </div>
   );
