@@ -1,5 +1,3 @@
-# react-qvnj7y
+# Magic Matching
 
-React Matching Application 
-
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-qvnj7y)
+Simple react project matching card images 

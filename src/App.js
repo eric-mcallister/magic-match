@@ -28,6 +28,8 @@ export default function App() {
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }))
     
+    setChoiceTwo(null)
+    setChoiceOne(null)
     setCards(shuffledCards)
     setTurns(0)
   }
@@ -68,6 +70,11 @@ export default function App() {
     setDisabled(false)
   }
 
+  //Call this function to "start the game" when the components first mount
+  useEffect(() => {
+    shuffleCards()
+  }, [])
+
   return (
     <div className="App">
       <h1>Magic Match</h1>
@@ -83,6 +90,7 @@ export default function App() {
           />
         )}
       </div>
+      <p>Turns: {turns}</p>
     </div>
   );
 }
